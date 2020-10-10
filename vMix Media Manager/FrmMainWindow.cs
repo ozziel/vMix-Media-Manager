@@ -244,7 +244,7 @@ namespace vMix_Media_Manager
                 else
                 {
                     //If it's not onlie RED....well...light coral...
-                    e.CellStyle.BackColor = Color.LightCoral;
+                    e.CellStyle.BackColor = Color.IndianRed;
                 }
             }
 
