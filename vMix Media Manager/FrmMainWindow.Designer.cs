@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainWindow));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPack = new MetroFramework.Controls.MetroButton();
             this.btnSave = new MetroFramework.Controls.MetroButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnOpen = new MetroFramework.Controls.MetroButton();
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.centralControl = new System.Windows.Forms.Label();
-            this.btnPack = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -62,7 +62,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(798, 359);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // btnPack
+            // 
+            this.btnPack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPack.Enabled = false;
+            this.btnPack.Location = new System.Drawing.Point(401, 3);
+            this.btnPack.Name = "btnPack";
+            this.btnPack.Size = new System.Drawing.Size(193, 54);
+            this.btnPack.TabIndex = 3;
+            this.btnPack.Text = "Copy online media to new folder";
+            this.btnPack.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
             // 
             // btnSave
             // 
@@ -88,7 +99,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(792, 293);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
             // btnOpen
             // 
@@ -119,18 +130,6 @@
             this.centralControl.Click += new System.EventHandler(this.centralControl_Click);
             this.centralControl.MouseEnter += new System.EventHandler(this.centralControl_MouseEnter);
             this.centralControl.MouseLeave += new System.EventHandler(this.centralControl_MouseLeave);
-            // 
-            // btnPack
-            // 
-            this.btnPack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPack.Enabled = false;
-            this.btnPack.Location = new System.Drawing.Point(401, 3);
-            this.btnPack.Name = "btnPack";
-            this.btnPack.Size = new System.Drawing.Size(193, 54);
-            this.btnPack.TabIndex = 3;
-            this.btnPack.Text = "Move all media to new location";
-            this.btnPack.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
             // 
             // FrmMainWindow
             // 

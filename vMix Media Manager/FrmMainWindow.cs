@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Components;
@@ -154,7 +149,6 @@ namespace vMix_Media_Manager
 
         }
 
-
         private void searchForFilesInDir(string path)
         {
             Debug.WriteLine(path);
@@ -203,26 +197,57 @@ namespace vMix_Media_Manager
 
         }
 
-
         private void centralControl_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
             Debug.WriteLine("default");
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnPack_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("WOO HOO!!!");
+            string newPath = "";
+            
+            using (var fldrDlg = new FolderBrowserDialog())
+            {
+                // Dialog to get new folder
+                if (fldrDlg.ShowDialog() == DialogResult.OK)
+                {
+                    newPath = fldrDlg.SelectedPath;
+
+                    // copy to new folder
+                    foreach (var item in vMixMediaList.Inputs)
+                    {
+                        // don't care if it's not missing
+                        if (item.Online)
+                        {
+                            // Copy file to new folder
+                            File.Copy(Path.GetFullPath(item.Path), newPath + "\\" + Path.GetFileName(item.Path), true);
+                            // Set path in preset XML
+                            item.SetNewPath(newPath + "\\" + Path.GetFileName(item.Path));
+                        }
+                    }
+                    // Success message
+                    MessageBox.Show("Online Media Copied to " + newPath);
+                }
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                if ((bool)e.Value == true)
+                {
+                    // if it's online GREEN
+                    e.CellStyle.BackColor = Color.LightGreen;
+                }
+                else
+                {
+                    //If it's not onlie RED....well...light coral...
+                    e.CellStyle.BackColor = Color.LightCoral;
+                }
+            }
+
         }
     }
 }
