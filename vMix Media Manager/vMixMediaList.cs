@@ -29,14 +29,27 @@ namespace vMix_Media_Manager
 
         public void Save()
         {
-            try
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.FileName = Path.GetFileNameWithoutExtension(vMixXmlPath);
+            saveFileDialog1.Title = "Save preset Files";
+            saveFileDialog1.CheckPathExists = true;
+            saveFileDialog1.DefaultExt = "vmix";
+            saveFileDialog1.Filter = "vMix preset files (*.vmix)|*.vmix|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.RestoreDirectory = true;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                vmixXml.Save(Path.GetDirectoryName(vMixXmlPath) + "/" + Path.GetFileNameWithoutExtension(vMixXmlPath) + " - Fixed Path.vmix");
+                try
+                {
+                    MessageBox.Show(saveFileDialog1.FileName);
+                    vmixXml.Save(saveFileDialog1.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
         }
 
         private void readXml(string path)

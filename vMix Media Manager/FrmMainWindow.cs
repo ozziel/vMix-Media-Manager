@@ -249,5 +249,10 @@ namespace vMix_Media_Manager
             }
 
         }
+
+        private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
     }
 }
