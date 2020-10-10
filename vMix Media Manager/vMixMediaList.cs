@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -71,6 +66,9 @@ namespace vMix_Media_Manager
                             break;
                         case 14:
                             addList(input.Attributes.GetNamedItem("OriginalTitle").InnerText, input.Attributes.GetNamedItem("Videos").InnerText, input);
+                            break;
+                        case 9000:
+                            addInput(input.Attributes.GetNamedItem("OriginalTitle").InnerText, input.InnerText, input, vMixInputType.Video); // Added for gtzip files
                             break;
                         default:
                             break;

@@ -48,6 +48,7 @@ namespace vMix_Media_Manager
                 vMixMediaList.Open(openFileDialog1.FileName);
                 setDgv();
                 btnSave.Enabled = true;
+                btnPack.Enabled = true;
             }
 
         }
@@ -207,6 +208,21 @@ namespace vMix_Media_Manager
         {
             this.Cursor = Cursors.Default;
             Debug.WriteLine("default");
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnPack_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("WOO HOO!!!");
         }
     }
 }

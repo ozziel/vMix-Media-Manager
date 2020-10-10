@@ -31,11 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMainWindow));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.btnOpen = new MetroFramework.Controls.MetroButton();
             this.btnSave = new MetroFramework.Controls.MetroButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnOpen = new MetroFramework.Controls.MetroButton();
+            this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager(this.components);
             this.centralControl = new System.Windows.Forms.Label();
+            this.btnPack = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager1)).BeginInit();
@@ -48,6 +49,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.btnPack, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSave, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnOpen, 0, 0);
@@ -57,8 +59,22 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(798, 359);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(202, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(193, 54);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save .vMix File";
+            this.btnSave.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dataGridView1
             // 
@@ -72,10 +88,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(792, 293);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // metroStyleManager1
-            // 
-            this.metroStyleManager1.Owner = null;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // btnOpen
             // 
@@ -88,17 +101,9 @@
             this.btnOpen.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
-            // btnSave
+            // metroStyleManager1
             // 
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(202, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(193, 54);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save .vMix File";
-            this.btnSave.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.metroStyleManager1.Owner = null;
             // 
             // centralControl
             // 
@@ -114,6 +119,18 @@
             this.centralControl.Click += new System.EventHandler(this.centralControl_Click);
             this.centralControl.MouseEnter += new System.EventHandler(this.centralControl_MouseEnter);
             this.centralControl.MouseLeave += new System.EventHandler(this.centralControl_MouseLeave);
+            // 
+            // btnPack
+            // 
+            this.btnPack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPack.Enabled = false;
+            this.btnPack.Location = new System.Drawing.Point(401, 3);
+            this.btnPack.Name = "btnPack";
+            this.btnPack.Size = new System.Drawing.Size(193, 54);
+            this.btnPack.TabIndex = 3;
+            this.btnPack.Text = "Move all media to new location";
+            this.btnPack.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnPack.Click += new System.EventHandler(this.btnPack_Click);
             // 
             // FrmMainWindow
             // 
@@ -144,6 +161,7 @@
         private MetroFramework.Components.MetroStyleManager metroStyleManager1;
         private MetroFramework.Controls.MetroButton btnSave;
         private System.Windows.Forms.Label centralControl;
+        private MetroFramework.Controls.MetroButton btnPack;
     }
 }
 
